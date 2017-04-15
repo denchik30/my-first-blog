@@ -3,20 +3,16 @@
             <title>Memes</title>
         </head>
         <body>
-            <div>
-                <h1><a href="">Kek blog</a></h1>
-            </div>
+                <div>
+        <h1><a href="/">Kek blog</a></h1>
+    </div>
 
-            <div>
-                <p>published: 14.06.2014, 12:14</p>
-                <h2><a href="">My first post</a></h2>
-                <p>bolnichka</p>
-            </div>
-
-            <div>
-                <p>published: 14.06.2014, 12:14</p>
-                <h2><a href="">My second post</a></h2>
-                <p>но это неточно</p>
-            </div>
+    {% for Post in posts %}
+        <div>
+            <p>published: {{ Post.published_date }}</p>
+            <h1><a href="">{{ Post.title }}</a></h1>
+            <p>{{ Post.text|linebreaksbr }}</p>
+        </div>
+    {% endfor %}
         </body>
     </html>
