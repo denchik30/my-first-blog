@@ -4,16 +4,16 @@
 
 {% block content %}
   <h1>Registration</h1>
+
+
   <form  method="post" action="{% url 'register' %}">
 
-    {% csrf_token %}
-    {% if form.error_dict %}
-      <p class="error">Пожалуйста исправьте нижеприведённые ошибки.</p>
-    {% endif %}
-
-    {% if form.username.errors %}
-      {{ form.username.html_error_list }}
-    {% endif %}
+   {% csrf_token %}
+  
+   
+   
+    
+   
 <table>
         <tr>
             <td>{{ form.username.label_tag }}</td>
@@ -22,24 +22,23 @@
         
     
 
-    {% if form.password1.errors %}
-      {{ form.password1.html_error_list }}
-    {% endif %}
+    
     <tr>
             <td>{{ form.password1.label_tag }}</td>
             <td>{{ form.password1 }}</td>
         </tr>
-        
+       
 
-    {% if form.password2.errors %}
-      {{ form.password2.html_error_list }}
-    {% endif %}
 
     <tr>
             <td>{{ form.password2.label_tag }}</td>
             <td>{{ form.password2 }}</td>
         </tr>
+        
     </table>
+{{ form.username.errors }}
+{{ form.password1.errors }}
+{{ form.password2.errors }}
 
     <input type="submit" value="Create" />
 

@@ -58,18 +58,16 @@ def post_edit(request, pk):
 
 
 def register(request):
-    form = UserCreationForm(data=request.POST or None)
-
-    if request.method == 'POST' and form.is_valid():
-        #data = request.POST.copy()
-        form.save()
-       
-        #if form.is_valid():
-            #new_user = User.objects.create_user(data)
-        return redirect('login')
-    #else:
-        #data = {}
-
+    form = UserCreationForm()
+    if request.method == 'POST':
+        
+        form = UserCreationForm(data=request.POST or None)
+        if form.is_valid():       
+            form.save()
+            return redirect('login')
+        #else:
+             #form = UserCreationForm()
+    
     return render(request,'registration/register.html', {'form': form})
 
 

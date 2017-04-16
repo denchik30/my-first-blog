@@ -22,8 +22,11 @@
         <input type="hidden" name="next" value="{{ next }}" />
     </form>
 
-<form action="{% url 'register' %}" method="post">
-{% csrf_token %}
-<input type="submit" class="btn btn-warning" value="Registration" name="register">
+<form method="get" action="{% url 'register' %}">
+<input type="submit" class="btn btn-warning" value="Registration" />
 </form>
+
+
+
+
 {% endblock %}
