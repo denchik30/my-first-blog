@@ -3,6 +3,18 @@ from django.utils import timezone
 from .models import Post
 from .forms import PostForm
 from django.contrib.auth.decorators import login_required
+from django import forms
+from django.http import HttpResponseRedirect
+from django.shortcuts import render_to_response
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import User
+from django.views.generic.edit import FormView
+from django import forms
+from django.http import HttpResponseRedirect
+from django.shortcuts import render_to_response
+
+
+
 
 
 def post_list(request):
@@ -42,5 +54,25 @@ def post_edit(request, pk):
         else:
             form = PostForm(instance=post)
         return render(request, 'blog/post_edit.html', {'form': form})
+
+
+
+def register(request):
+    form = UserCreationForm(data=request.POST or None)
+
+    if request.method == 'POST' and form.is_valid():
+        #data = request.POST.copy()
+        form.save()
+       
+        #if form.is_valid():
+            #new_user = User.objects.create_user(data)
+        return redirect('login')
+    #else:
+        #data = {}
+
+    return render(request,'registration/register.html', {'form': form})
+
+
+
 
 
