@@ -18,7 +18,12 @@
         </tr>
         </table>
 
-        <input type="submit" value="login" />
+        <input type="submit" value="Ok" />
         <input type="hidden" name="next" value="{{ next }}" />
     </form>
+
+<form action="{% url 'register' %}" method="post">
+{% csrf_token %}
+<input type="submit" class="btn btn-warning" value="Registration" name="register">
+</form>
 {% endblock %}
